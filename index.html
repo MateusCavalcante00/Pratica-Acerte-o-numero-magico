@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <header>Acerte o numero mágico!</header>
+    <header><strong>Acerte o numero mágico!</strong></header>
     <div>
         <p>
             <input type="number" name="numero" id="numero" placeholder="Insira o numero">
@@ -17,8 +17,24 @@
         </p>
     </div>
     <script>
+
+        let numeroTentado = document.getElementById('numero').value;
+
         function jogada() {
 
+            if (numeroTentado === "") {
+                alert(`Voçê precisa inserir um numero para a jogada ser valida!`);
+                return;
+            }
+
+            numeroTentado = Number(numeroTentado);
+
+            let min = 1;
+            let max = 1000;
+
+            let numeroSorteado = Math.round(Math.random() * (max - min)) + min;
+
+            alert(`${numeroSorteado}`);
         }
 
         function reiniciar() {
