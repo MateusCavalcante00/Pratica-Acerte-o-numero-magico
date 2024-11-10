@@ -18,21 +18,20 @@
     </div>
     <script>
 
-        let numeroTentado = document.getElementById('numero');
+        let min = 1;
+        let max = 1000;
+        let numeroSorteado = Math.round(Math.random() * (max - min)) + min;
 
         function jogada() {
+
+            let numeroTentado = document.getElementById('numero');
 
             if (numeroTentado.value === "") {
                 alert(`Voçê precisa inserir um numero para a jogada ser valida!`);
                 return;
             }
 
-            numeroTentado = Number(numeroTentado).value;
-
-            let min = 1;
-            let max = 1000;
-
-            let numeroSorteado = Math.round(Math.random() * (max - min)) + min;
+            numeroTentado = Number(numeroTentado.value);
 
             if (numeroTentado === numeroSorteado) {
                 alert("Parabens, vc acertou!")
@@ -41,6 +40,9 @@
             } else if (numeroTentado < numeroSorteado) {
                 alert("Tente um numero maior!")
             }
+
+            numeroTentado.value = "";
+
         }
 
         function reiniciar() {
