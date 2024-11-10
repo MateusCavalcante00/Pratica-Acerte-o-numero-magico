@@ -41,12 +41,14 @@
                 alert("Tente um numero maior!")
             }
 
-            numeroTentado.value = "";
-
+            numeroSorteado.value = "";
         }
 
         function reiniciar() {
-
+            let min = 1;
+            let max = 1000;
+            let numeroSorteado = Math.round(Math.random() * (max - min)) + min;
+            alert(`Jogo reiniciado! Novo numero sorteado, boa sorte!`)
         }
     </script>
 </body>
