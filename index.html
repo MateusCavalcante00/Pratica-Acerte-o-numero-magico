@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilo.css">
     <title>Acerte o numero mágico</title>
 </head>
 
@@ -32,8 +33,6 @@
         function jogada() {
 
             let numeroTentado = document.getElementById('numero');
-
-
 
             if (numeroTentado.value === "") {
                 divResult.innerHTML = `Voçê precisa inserir um numero para a jogada ser valida!`
