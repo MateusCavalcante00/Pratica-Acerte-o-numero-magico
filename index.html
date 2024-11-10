@@ -18,23 +18,29 @@
     </div>
     <script>
 
-        let numeroTentado = document.getElementById('numero').value;
+        let numeroTentado = document.getElementById('numero');
 
         function jogada() {
 
-            if (numeroTentado === "") {
+            if (numeroTentado.value === "") {
                 alert(`Voçê precisa inserir um numero para a jogada ser valida!`);
                 return;
             }
 
-            numeroTentado = Number(numeroTentado);
+            numeroTentado = Number(numeroTentado).value;
 
             let min = 1;
             let max = 1000;
 
             let numeroSorteado = Math.round(Math.random() * (max - min)) + min;
 
-            alert(`${numeroSorteado}`);
+            if (numeroTentado === numeroSorteado) {
+                alert("Parabens, vc acertou!")
+            } else if (numeroTentado > numeroSorteado) {
+                alert("Tente um numero menor!")
+            } else if (numeroTentado < numeroSorteado) {
+                alert("Tente um numero maior!")
+            }
         }
 
         function reiniciar() {
