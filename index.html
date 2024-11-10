@@ -16,29 +16,51 @@
             <input type="button" value="Reiniciar" onclick="reiniciar()">
         </p>
     </div>
-    <script>
+    <div id="feedback">
 
+    </div>
+    <div id="tentativas">
+        <strong> Tentativas: 0 </strong>
+    </div>
+    <script>
         let min = 1;
         let max = 1000;
         let numeroSorteado = Math.round(Math.random() * (max - min)) + min;
+        let divResult = document.getElementById('feedback');
+        let tentativas = document.getElementById('tentativas'), numTentativas = 0;
 
         function jogada() {
 
             let numeroTentado = document.getElementById('numero');
 
+
+
             if (numeroTentado.value === "") {
-                alert(`Voçê precisa inserir um numero para a jogada ser valida!`);
+                divResult.innerHTML = `Voçê precisa inserir um numero para a jogada ser valida!`
                 return;
             }
 
             numeroTentado = Number(numeroTentado.value);
 
             if (numeroTentado === numeroSorteado) {
-                alert("Parabens, vc acertou!")
+
+                divResult.innerHTML = "Parabens, vc acertou!"
+
             } else if (numeroTentado > numeroSorteado) {
-                alert("Tente um numero menor!")
+
+                numTentativas++;
+
+                divResult.innerHTML = "<strong>Tente um numero menor!</strong>";
+
+                tentativas.innerHTML = `Tentativas: <strong>${numTentativas}</strong>`;
+
             } else if (numeroTentado < numeroSorteado) {
-                alert("Tente um numero maior!")
+
+                numTentativas++;
+
+                divResult.innerHTML = "<strong>Tente um numero maior!</strong>";
+
+                tentativas.innerHTML = `Tentativas: ${numTentativas}`;
             }
 
             numeroSorteado.value = "";
@@ -48,7 +70,7 @@
             let min = 1;
             let max = 1000;
             let numeroSorteado = Math.round(Math.random() * (max - min)) + min;
-            alert(`Jogo reiniciado! Novo numero sorteado, boa sorte!`)
+            alert(`Jogo reiniciado! Novo numero sorteado, boa sorte!`);
         }
     </script>
 </body>
