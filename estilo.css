@@ -3,3 +3,23 @@ body {
     color: white;
     font-size: 30px;
 }
+
+.inputsEcabeçalho {
+    background-color: white;
+    color: black;
+    padding: 25px;
+    width: 500px;
+    text-align: center;
+    margin: 0 auto;
+    border-radius: 15px;
+}
+
+#feedback {
+    background-color: white;
+    color: black;
+    text-align: center;
+    padding: 25px;
+    width: 500px;
+    margin: 0 auto;
+    border-radius: 10px;
+}
