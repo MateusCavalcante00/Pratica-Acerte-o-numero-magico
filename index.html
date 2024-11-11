@@ -29,16 +29,21 @@
 
         function jogada() {
 
-            let numeroTentado = document.getElementById('numero').value;
+            let numeroTentado = document.getElementById('numero');
 
-            if (numeroTentado === "" || Number(numeroTentado) > 500) {
+            if (numeroTentado.value === "" || Number(numeroTentado.value) > 500) {
+
                 alert(`Voçê precisa inserir um numero valido para a jogada!`);
+                numeroTentado.value = "";
+                numeroTentado.focus();
                 return;
             }
 
-            numeroTentado = Number(numeroTentado);
+            let numero = Number(numeroTentado.value);
 
-            let quase = Math.abs(numeroSorteado - numeroTentado);
+
+            let quase = Math.abs(numeroSorteado - numero);
+
             if (quase < 10) {
 
                 numTentativas++;
@@ -46,18 +51,20 @@
                 divResult.innerHTML = "Uuuuuh, essa foi quase!"
             }
 
-            if (numeroTentado === numeroSorteado) {
+            if (numero === numeroSorteado) {
 
-                divResult.innerHTML = "Parabens, voçê acertou!";
+                divResult.innerHTML = `<br><strong>Parabens, voçê acertou!</br></strong>
+                                       <br><strong>Numero totais de tentavivas: ${numTentativas}<br></strong>
+                                       <br><strong>Numero mágico: ${numeroSorteado}</br></strong>`
 
-            } else if (numeroTentado > numeroSorteado) {
+            } else if (numero > numeroSorteado) {
 
                 numTentativas++;
 
                 divResult.innerHTML = `<strong>Tente um numero menor!</strong>
                                        <br>Tentativas: <strong>${numTentativas}</strong></br>`;
 
-            } else if (numeroTentado < numeroSorteado) {
+            } else if (numero < numeroSorteado) {
 
                 numTentativas++;
 
@@ -65,7 +72,9 @@
                                        <br>Tentativas: <strong>${numTentativas}</strong></br>`;
             }
 
-            numeroTentado = "";
+            numeroTentado.value = "";
+            numeroTentado.focus();
+
         }
 
         function reiniciar() {
@@ -74,7 +83,6 @@
             let numeroSorteado = Math.round(Math.random() * (max - min)) + min;
             alert(`Jogo reiniciado! Novo numero sorteado, boa sorte!`);
             divResult.innerHTML = `<strong>Boa sorte!</strong>`
-            numeroTentado = "";
         }
     </script>
 </body>
