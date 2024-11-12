@@ -13,27 +13,29 @@
         <header><strong>Acerte o numero mágico!</strong></header>
         <p>
             <input type="number" name="numero" id="numero" placeholder="Numero entre 1 e 500!">
-            <input type="button" value="Jogar" onclick="jogada()">
-            <input type="button" value="Reiniciar" onclick="reiniciar()">
+            <button id="botao1" onclick="jogada()">Jogar</button>
+            <button id="botao2" onclick="reiniciar()">Reiniciar</button>
         </p>
     </div>
     <div id="feedback">
         <strong>Boa sorte!</strong>
     </div>
     <script>
+
         let min = 1;
         let max = 500;
         let numeroSorteado = Math.round(Math.random() * (max - min)) + min;
         let divResult = document.getElementById('feedback');
-        let numTentativas = 0;
+        let numTentativas = 0; vezes = 1;
+        let numeroTentado = document.getElementById('numero');
 
         function jogada() {
 
-            let numeroTentado = document.getElementById('numero');
 
-            if (numeroTentado.value === "" || Number(numeroTentado.value) > 500) {
 
-                alert(`Voçê precisa inserir um numero valido para a jogada!`);
+            if (numeroTentado.value === "" || Number(numeroTentado.value) > 500 || Number(numeroTentado.value) <= 0) {
+
+                alert("Você precisa inserir um numero válido para a jogada!");
                 numeroTentado.value = "";
                 numeroTentado.focus();
                 return;
@@ -41,35 +43,38 @@
 
             let numero = Number(numeroTentado.value);
 
-
             let quase = Math.abs(numeroSorteado - numero);
 
-            if (quase < 10) {
-
-                numTentativas++;
-
-                divResult.innerHTML = "Uuuuuh, essa foi quase!"
+            if (quase < 5 && quase !== 0 && vezes === 1) {
+                vezes++;
+                alert("Uuuuuh, essa foi quase!")
             }
+
+
 
             if (numero === numeroSorteado) {
 
-                divResult.innerHTML = `<br><strong>Parabens, voçê acertou!</br></strong>
-                                       <br><strong>Numero totais de tentavivas: ${numTentativas}<br></strong>
+                divResult.innerHTML = `<br><strong>Parabens, você acertou!</br></strong>
+                                       <br><strong>Numero total de tentavivas: ${numTentativas}<br></strong>
                                        <br><strong>Numero mágico: ${numeroSorteado}</br></strong>`
+
 
             } else if (numero > numeroSorteado) {
 
                 numTentativas++;
 
                 divResult.innerHTML = `<strong>Tente um numero menor!</strong>
-                                       <br>Tentativas: <strong>${numTentativas}</strong></br>`;
+                                       <br>Tentativas: <strong>${numTentativas}</strong></br>
+                                       <br><strong>Ultimo numero tentado: ${numero}</strong></br>`;
+
 
             } else if (numero < numeroSorteado) {
 
                 numTentativas++;
 
                 divResult.innerHTML = `<strong>Tente um numero maior!</strong>
-                                       <br>Tentativas: <strong>${numTentativas}</strong></br>`;
+                                       <br>Tentativas: <strong>${numTentativas}</strong></br>
+                                       <br><strong>Ultimo numero tentado: ${numero}</strong></br>`;
             }
 
             numeroTentado.value = "";
@@ -78,11 +83,24 @@
         }
 
         function reiniciar() {
-            let min = 1;
-            let max = 500;
-            let numeroSorteado = Math.round(Math.random() * (max - min)) + min;
-            alert(`Jogo reiniciado! Novo numero sorteado, boa sorte!`);
-            divResult.innerHTML = `<strong>Boa sorte!</strong>`
+
+            let reinicio = confirm('Quer realmente reiniciar o jogo?');
+
+            if (reinicio) {
+                numeroSorteado = Math.round(Math.random() * (max - min)) + min;
+                alert(`Jogo reiniciado! Novo numero sorteado, boa sorte!`);
+                divResult.innerHTML = `<strong>Boa sorte!</strong>`
+                numTentativas = 0;
+                numeroTentado.value = "";
+                numeroTentado.focus();
+                vezes = 1;
+
+            } else {
+                numeroTentado.focus();
+                return;
+
+            }
+
         }
     </script>
 </body>

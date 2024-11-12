@@ -1,25 +1,45 @@
 body {
-    background-color: rgba(7, 6, 6, 0.856);
+    background-color: rgba(216, 209, 209, 0.856);
     color: white;
-    font-size: 30px;
+    font-size: 25px;
 }
 
 .inputsEcabeçalho {
-    background-color: white;
-    color: black;
+    background-color: rgb(4, 43, 70);
+    color: white;
     padding: 25px;
     width: 500px;
     text-align: center;
     margin: 0 auto;
     border-radius: 15px;
+    gap: 15px;
+    box-shadow: 50ch;
 }
 
 #feedback {
-    background-color: white;
-    color: black;
+    background-color: rgb(4, 43, 70);
+    color: white;
     text-align: center;
     padding: 25px;
     width: 500px;
     margin: 0 auto;
     border-radius: 10px;
+}
+
+#numero {
+    padding: 14px;
+    width: 150px;
+    font-size: 13px;
+    background-color: yellow;
+    border-radius: 25px;
+    color: rgb(4, 43, 70);
+}
+
+button {
+    cursor: pointer;
+    padding: 10px;
+    width: 80px;
+    border-radius: 10%;
+    background-color: red;
+    color: white;
 }
